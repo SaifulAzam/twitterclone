@@ -20,6 +20,10 @@ var angularRoute = require('angular-route');
                         templateUrl: 'templates/newsfeed.html',
                         controller: 'NewsfeedController'
                     })
+                    .when('/users/:id', {
+                        templateUrl: 'templates/profile.html',
+                        controller: 'ProfileController'
+                    })
                     .otherwise({
                         redirectTo: '/'
                     });
@@ -29,3 +33,4 @@ var angularRoute = require('angular-route');
 })();
 
 var NewsfeedController = require('./controllers/NewsfeedController');
+var ProfileController = require('./controllers/ProfileController');

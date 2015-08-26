@@ -1,0 +1,17 @@
+<section class="row">
+
+    <article class="medium-4 columns">
+        <img src="{{ user.avatar }}" alt="" />
+    </article>
+
+    <article class="medium-8 columns">
+        <p>
+            {{ user.name }}<br />
+            {{ user.username }}
+        </p>
+        <ul class="no-bullet">
+            <li ng-repeat="tweet in tweets.data">{{ tweet.message }}</li>
+        </ul>
+    </article>
+
+</section>
