@@ -1,0 +1,14 @@
+{
+  "name": "twitterclone",
+  "devDependencies": {
+    "angular-foundation": "~0.6.0"
+  },
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {}
+}

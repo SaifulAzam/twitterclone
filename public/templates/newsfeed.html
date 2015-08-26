@@ -1,0 +1,27 @@
+<section class="row">
+    <article class="column">
+        <p>
+            {{ user.name }}<br />
+            @{{ user.username }}
+        </p>
+    </article>
+</section>
+
+<section class="row">
+    <article class="column">
+        <p>
+            Followers: {{ followers.total }}<br />
+            Following: {{ following.total }}
+        </p>
+    </article>
+</section>
+
+<section class="row">
+    <article class="column" ng-repeat="news in newsfeed.data">
+        <p>
+            {{ news.name }}<br />
+            {{ news.message }}<br />
+            {{ news.created_at }}
+        </p>
+    </article>
+</section>
