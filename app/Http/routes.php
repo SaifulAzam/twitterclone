@@ -1,24 +1,27 @@
 <?php
 
-Route::get('/', ['middleware' => 'auth', function() {
+Route::get('/', function() {
     return view('layouts.default');
-}]);
-
-// Route::post('tweet', ['as' => 'tweet.store', 'uses' => 'UserController@storeTweet']);
-
-Route::group(['prefix' => 'auth'], function () {
-
-    Route::get('login', ['as' => 'login', 'uses' => 'Auth\AuthController@getLogin']);
-    Route::post('login', ['as' => 'login.post', 'uses' => 'Auth\AuthController@postLogin']);
-    Route::get('logout', ['as' => 'logout', 'uses' => 'Auth\AuthController@getLogout']);
-    Route::get('register', ['as' => 'register', 'uses' => 'Auth\AuthController@getRegister']);
-    Route::post('register', ['as' => 'register.post', 'uses' => 'Auth\AuthController@postRegister']);
-
 });
+//
+// // Route::post('tweet', ['as' => 'tweet.store', 'uses' => 'UserController@storeTweet']);
+//
+// Route::group(['prefix' => 'auth'], function () {
+//
+//     Route::get('login', ['as' => 'login', 'uses' => 'Auth\AuthController@getLogin']);
+//     Route::post('login', ['as' => 'login.post', 'uses' => 'Auth\AuthController@postLogin']);
+//     Route::get('logout', ['as' => 'logout', 'uses' => 'Auth\AuthController@getLogout']);
+//     Route::get('register', ['as' => 'register', 'uses' => 'Auth\AuthController@getRegister']);
+//     Route::post('register', ['as' => 'register.post', 'uses' => 'Auth\AuthController@postRegister']);
+//
+// });
 
 
-Route::group(['prefix' => 'api/v1', 'middleware' => 'auth'], function() {
+Route::group(['prefix' => 'api/v1'], function() {
 
+    Route::resource('authenticate', 'AuthenticateController', ['only' => ['index']]);
+    Route::post('authenticate', 'AuthenticateController@authenticate');
+    Route::get('authenticate/user', 'AuthenticateController@getAuthenticatedUser');
 
     Route::get('users/{id}/following', ['as' => 'users.following', 'uses' => 'UserController@following']);
     Route::get('users/{id}/followers', ['as' => 'users.followers', 'uses' => 'UserController@followers']);

@@ -14,7 +14,7 @@
 
     <section class="row">
         <article class="column">
-            <div ng-view=""></div>
+            <div ui-view=""></div>
         </article>
     </section>
 
