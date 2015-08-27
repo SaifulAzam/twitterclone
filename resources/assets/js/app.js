@@ -5,6 +5,7 @@ var paths = {
 var angular = require('angular');
 var angularRoute = require('angular-ui-router');
 var satellizer = require('satellizer');
+var foundation = require('../../../vendor/bower_components/angular-foundation/mm-foundation-tpls');
 
 (function() {
 
@@ -13,7 +14,8 @@ var satellizer = require('satellizer');
     angular
         .module('TwitterApp', [
             'ui.router',
-            'satellizer'
+            'satellizer',
+            'mm.foundation'
         ])
         .config(function($stateProvider, $urlRouterProvider, $authProvider, $httpProvider, $provide) {
 
