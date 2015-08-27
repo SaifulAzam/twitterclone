@@ -1,45 +1,20 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>Laravel</title>
+<html lang="en" ng-app="TwitterApp">
 
-        <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
+<head>
 
-        <style>
-            html, body {
-                height: 100%;
-            }
+    <meta charset="utf-8">
+    <title>Twitter Clone</title>
+    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
 
-            body {
-                margin: 0;
-                padding: 0;
-                width: 100%;
-                display: table;
-                font-weight: 100;
-                font-family: 'Lato';
-            }
+</head>
 
-            .container {
-                text-align: center;
-                display: table-cell;
-                vertical-align: middle;
-            }
-
-            .content {
-                text-align: center;
-                display: inline-block;
-            }
-
-            .title {
-                font-size: 96px;
-            }
-        </style>
-    </head>
     <body>
-        <div class="container">
-            <div class="content">
-                <div class="title">Laravel 5</div>
-            </div>
-        </div>
+
+        <div id="main-content" ui-view="" ng-cloak></div>
+
+        <script src="{{ asset('assets/js/package.js') }}" charset="utf-8"></script>
+
     </body>
+
 </html>
