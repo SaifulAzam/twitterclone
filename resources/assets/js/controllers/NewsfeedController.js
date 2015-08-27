@@ -8,8 +8,6 @@
 
     function functionName($scope, $http, $rootScope) {
 
-        $scope.newsfeeds = [];
-
         $http.get('/api/v1/users/1').success(function(data) {
             $scope.user = data;
         }).error(function(error) {
@@ -34,6 +32,7 @@
             $scope.error = error;
         });
 
+        $scope.contentLoaded = true;
 
         $scope.newTweet = function() {
 

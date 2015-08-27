@@ -19,7 +19,25 @@ class UserSeeder extends Seeder
             'name' => 'Jason Raimondi',
             'username' => 'jasonraimondi',
             'email' => 'jason@raimondi.us',
-            'avatar' => 'http://lorempixel.com/350/350/people/',
+            'avatar' => '/images/cache/large/jasonraimondi.jpg',
+            'password' => bcrypt('jason')
+        ]);
+
+        $user->create([
+            'role_id' => 1,
+            'name' => 'Jason Raimondi1',
+            'username' => 'jasonraimondi1',
+            'email' => 'jason@raimondi1.us',
+            'avatar' => '/images/cache/large/jasonraimondi.jpg',
+            'password' => bcrypt('jason')
+        ]);
+
+        $user->create([
+            'role_id' => 1,
+            'name' => 'Jason Raimondi2',
+            'username' => 'jasonraimondi2',
+            'email' => 'jason@raimondi2.us',
+            'avatar' => '/images/cache/large/jasonraimondi.jpg',
             'password' => bcrypt('jason')
         ]);
 

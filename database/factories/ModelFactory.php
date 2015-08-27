@@ -18,7 +18,7 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'username' => $faker->unique()->userName,
         'email' => $faker->unique()->email,
         'password' => bcrypt(str_random(10)),
-        'avatar'    =>  $faker->imageUrl(350, 350, 'people'),
+        'avatar'    =>  '/images/cache/large/' . $faker->numberBetween(1, 102) . '.jpg',
         'remember_token' => str_random(10),
     ];
 });

@@ -32,7 +32,12 @@ var foundation = require('../../../vendor/bower_components/angular-foundation/mm
                         // Instead of checking for a status code of 400 which might be used
                         // for other reasons in Laravel, we check for the specific rejection
                         // reasons to tell us if we need to redirect to the login state
-                        var rejectionReasons = ['token_not_provided', 'token_expired', 'token_absent', 'token_invalid'];
+                        var rejectionReasons = [
+                            'token_not_provided',
+                            'token_expired',
+                            'token_absent',
+                            'token_invalid'
+                        ];
 
                         // Loop through each rejection reason and redirect to the login
                         // state if one is encountered
@@ -63,7 +68,7 @@ var foundation = require('../../../vendor/bower_components/angular-foundation/mm
 
             $authProvider.loginUrl = '/api/v1/authenticate';
 
-            $urlRouterProvider.otherwise('/auth');
+            $urlRouterProvider.otherwise('/newsfeed');
 
             $stateProvider
                 .state('auth', {
@@ -76,15 +81,20 @@ var foundation = require('../../../vendor/bower_components/angular-foundation/mm
                     templateUrl: '../templates/users.html',
                     controller: 'UserController as user'
                 })
-                .state('newsfeed', {
-                    url: '/newsfeed',
-                    templateUrl: '../templates/newsfeed.html',
-                    controller: 'NewsfeedController'
+                .state('user', {
+                    url: '/users/:id',
+                    templateUrl: '../templates/profile.html',
+                    controller: 'UserController'
                 })
                 .state('profile', {
                     url: '/profile',
                     templateUrl: '../templates/profile.html',
                     controller: 'ProfileController'
+                })
+                .state('newsfeed', {
+                    url: '/newsfeed',
+                    templateUrl: '../templates/newsfeed.html',
+                    controller: 'NewsfeedController'
                 });
         })
         .run(function($rootScope, $state) {
@@ -97,19 +107,14 @@ var foundation = require('../../../vendor/bower_components/angular-foundation/mm
                 var user = JSON.parse(localStorage.getItem('user'));
 
                 // If there is any user data in local storage then the user is quite
-                // likely authenticated. If their token is expired, or if they are
-                // otherwise not actually authenticated, they will be redirected to
-                // the auth state because of the rejected request anyway
+                // likely authenticated.
                 if (user) {
 
-                    // The user's authenticated state gets flipped to
-                    // true so we can now show parts of the UI that rely
-                    // on the user being logged in
+                    // The user's authenticated state gets flipped to true.
                     $rootScope.authenticated = true;
 
                     // Putting the user's data on $rootScope allows
-                    // us to access it anywhere across the app. Here
-                    // we are grabbing what is in local storage
+                    // us to access it anywhere across the app.
                     $rootScope.currentUser = user;
 
                     // If the user is logged in and we hit the auth route we don't need
@@ -121,7 +126,7 @@ var foundation = require('../../../vendor/bower_components/angular-foundation/mm
                         event.preventDefault();
 
                         // go to the "main" state which in our case is users
-                        $state.go('users');
+                        $state.go('newsfeed');
                     }
                 }
             });

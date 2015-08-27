@@ -34,7 +34,7 @@
 
 
         <div class="panel radius" ng-repeat="newsfeed in newsfeeds">
-            <h4><a href="/#/user/{{ user.id }}">{{ newsfeed.name }}</a> <small style="float:right;margin-top:10px;">{{ newsfeed.created_at }}</small></h4>
+            <h4><a href="/#/users/{{ newsfeed.user_id }}">{{ newsfeed.name }}</a> <small style="float:right;margin-top:10px;">{{ newsfeed.created_at }}</small></h4>
             <p>{{ newsfeed.message }}</p>
         </div>
 
