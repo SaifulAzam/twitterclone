@@ -94,7 +94,9 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
                 ->join('tweets', 'followers.user_id', '=', 'tweets.user_id')
                 ->join('users', 'followers.user_id', '=', 'users.id')
                 ->where('followers.follower_id', $this->id)
-                ->orderBy('tweets.created_at', 'desc')
+                ->orWhere('followers.user_id', $this->id)
+                ->orderBy('tweets.created_at', 'asc')
+                ->distinct('tweets.id')
                 ->paginate($pagination);
     }
 
