@@ -1,28 +1,43 @@
 <section class="row">
-    <article class="column">
-        <p>
-            {{ user.name }}<br />
-            @{{ user.username }}
-        </p>
+    <article class="medium-4 columns">
+
         <img src="{{ user.avatar }}" alt="" />
-    </article>
-</section>
+        <h2>{{ user.name }}</h2>
+        <p>@{{ user.username }}</p>
 
-<section class="row">
-    <article class="column">
-        <p>
-            Followers: {{ followers.total }}<br />
-            Following: {{ following.total }}
-        </p>
-    </article>
-</section>
+        <section class="row">
+            <article class="small-6 columns" style="border:1px solid black;border-right: none;">
+                <p class="text-center" style="margin:10px 0;">
+                    <span style="display:block">Following</span>
+                    <span style="display:block">{{ following.total }}</span>
+                </p>
+            </article>
+            <article class="small-6 columns" style="border:1px solid black;">
+                <p class="text-center" style="margin:10px 0;">
+                    <span style="display:block">Followers</span>
+                    <span style="display:block">{{ followers.total }}</span>
+                </p>
+            </article>
+        </section>
 
-<section class="row">
-    <article class="column" ng-repeat="news in newsfeed.data">
-        <p>
-            {{ news.name }}<br />
-            {{ news.message }}<br />
-            {{ news.created_at }}
-        </p>
     </article>
+
+    <article class="medium-8 columns">
+
+        <form name="projectForm" ng-submit="newTweet()">
+
+            <input type="hidden" name="user_id" value="{{ user.id }}" ng-model="tweetUser">
+            <textarea name="message" ng-model="tweetMessage" type="text"></textarea>
+            <button type="submit">Submit</button>
+
+        </form>
+
+
+        <div class="panel radius" ng-repeat="newsfeed in newsfeeds">
+            <h4><a href="/#/user/{{ user.id }}">{{ newsfeed.name }}</a> <small style="float:right;margin-top:10px;">{{ newsfeed.created_at }}</small></h4>
+            <p>{{ newsfeed.message }}</p>
+        </div>
+
+    </article>
+
 </section>

@@ -6,6 +6,7 @@
         .module('TwitterApp')
         .controller('AuthController', AuthController);
 
+
     function AuthController($auth, $state, $http, $rootScope) {
 
         var vm = this;

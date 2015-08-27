@@ -1,0 +1,27 @@
+<section class="row">
+    <article class="column">
+
+        <h5 ng-if="authenticated">
+            Welcome, {{ currentUser.name }} <small>{{ currentUser.username }}</small>
+        </h5>
+        <h3>Users</h3>
+
+        <ul class="button-group radius">
+            <li><a class="button tiny" ng-click="user.getUsers()">Get Users!</a></li>
+            <li><a class="button tiny alert" ng-click="user.logout()">Logout</a></li>
+        </ul>
+
+        <ul class="no-bullet" ng-if="user.users">
+            <li ng-repeat="user in user.users">
+                <h4>{{ user.name }}</h4>
+                <h5>{{ user.email }}</h5>
+            </li>
+        </ul>
+
+        <div class="alert-box alert" ng-if="user.error">
+            <strong>There was an error:</strong> {{ user.error.error }}
+            <br>Please go back and login again
+            <a class="close" href="#">&times;</a>
+        </div>
+    </article>
+</section>

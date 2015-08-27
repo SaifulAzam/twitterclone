@@ -1,8 +1,16 @@
-<form>
+<section class="login-container">
+    <article class="login">
 
-    <input type="email" class="form-control" placeholder="Email" ng-model="auth.email">
-    <input type="password" class="form-control" placeholder="Password" ng-model="auth.password">
+        <form>
 
-    <button class="btn btn-primary" ng-click="auth.login()">Submit</button>
-    
-</form>
+            <h1>Login</h1>
+
+            <input type="email" placeholder="Email" ng-model="auth.email">
+            <input type="password" placeholder="Password" ng-model="auth.password">
+
+            <button class="radius tiny" ng-click="auth.login()">Submit</button>
+
+        </form>
+
+    </article>
+</section>
